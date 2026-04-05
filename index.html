@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gma's 90th — Les Aspres Trip 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green-deep:    #1e3a2f;
+      --green-forest:  #2d5a3d;
+      --green-mid:     #3e7554;
+      --green-light:   #6a9e7a;
+      --green-pale:    #a8c4a2;
+      --beige-dark:    #c9b99a;
+      --beige-mid:     #ddd0b8;
+      --beige-light:   #f0e8d6;
+      --beige-cream:   #faf5eb;
+      --text-dark:     #1a2e22;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--beige-cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.4;
+    }
+
+    /* ── HYDRANGEA PHOTO CORNERS ── */
+    .section-wrap { position: relative; overflow: hidden; }
+
+    /* Base photo element */
+    .hyd-photo {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      background-image: url('hydrangea.png');
+      background-size: cover;
+      background-position: center top;
+      pointer-events: none;
+      z-index: 1;
+      border-radius: 50%;
+    }
+
+    .hyd-photo.sm {
+      width: 300px;
+      height: 300px;
+    }
+
+    /* Top-right: photo peeks in from the corner, fades out toward centre */
+    .hyd-photo.top-right {
+      top: -120px;
+      right: -120px;
+      -webkit-mask-image: radial-gradient(circle at 75% 25%, black 20%, transparent 65%);
+      mask-image: radial-gradient(circle at 75% 25%, black 20%, transparent 65%);
+    }
+
+    /* Bottom-left: mirror position */
+    .hyd-photo.bot-left {
+      bottom: -120px;
+      left: -120px;
+      -webkit-mask-image: radial-gradient(circle at 25% 75%, black 20%, transparent 65%);
+      mask-image: radial-gradient(circle at 25% 75%, black 20%, transparent 65%);
+      transform: rotate(180deg) scaleX(-1);
+    }
+
+    /* Colour blend overlays — one per section type */
+
+    /* Light sections (beige): soft warm tint, full colour photo */
+    .section-light .hyd-photo {
+      opacity: 0.75;
+      mix-blend-mode: multiply;
+    }
+
+    /* Dark sections (green): desaturate + lighten so it reads on dark bg */
+    .section-dark .hyd-photo {
+      opacity: 0.22;
+      filter: grayscale(30%) brightness(1.6);
+      mix-blend-mode: screen;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background-color: var(--green-deep);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 110%, var(--green-forest) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 20% -10%, #2d5a3d55 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 80% 20%, #1e3a2f88 0%, transparent 60%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--beige-dark);
+      margin-bottom: 1.8rem;
+      animation: fadeUp 1.4s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: clamp(3.2rem, 10vw, 8rem);
+      line-height: 1;
+      color: var(--beige-cream);
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title em { font-style: italic; color: var(--green-pale); display: block; }
+
+    .hero-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.4rem, 4vw, 2.8rem);
+      color: var(--beige-dark);
+      margin-top: 1.2rem;
+      letter-spacing: 0.15em;
+      animation: fadeUp 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-divider {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--beige-dark), transparent);
+      margin: 2rem auto;
+      animation: fadeUp 1.4s 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--green-pale);
+      letter-spacing: 0.06em;
+      animation: fadeUp 1.4s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      opacity: 0.5;
+      animation: fadeUp 1.4s 0.8s both;
+    }
+
+    .scroll-hint span {
+      font-family: 'Jost', sans-serif; font-weight: 200;
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--beige-mid);
+    }
+
+    .scroll-arrow {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--beige-mid), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ── INTRO ── */
+    .intro { background: var(--beige-light); padding: 6rem 2rem; text-align: center; }
+    .intro-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 2; }
+
+    .section-label {
+      font-family: 'Jost', sans-serif; font-weight: 300;
+      font-size: 0.68rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--green-mid); margin-bottom: 1.4rem;
+    }
+
+    .intro h2 {
+      font-family: 'Playfair Display', serif; font-weight: 400;
+      font-size: clamp(1.8rem, 4vw, 3rem); color: var(--green-deep);
+      line-height: 1.25; margin-bottom: 1.6rem;
+    }
+
+    .intro h2 em { font-style: italic; color: var(--green-forest); }
+
+    .intro p {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(1.05rem, 2vw, 1.25rem); color: #4a5c4e; line-height: 1.85;
+    }
+
+    /* ── DETAILS ── */
+    .details { background: var(--green-deep); padding: 5rem 2rem; }
+
+    .details-grid {
+      max-width: 960px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0; position: relative; z-index: 2;
+    }
+
+    .detail-card {
+      padding: 3rem 2rem;
+      border-left: 1px solid rgba(168, 196, 162, 0.15);
+      text-align: center; transition: background 0.3s;
+    }
+
+    .detail-card:first-child { border-left: none; }
+    .detail-card:hover { background: rgba(62, 117, 84, 0.12); }
+    .detail-icon { font-size: 1.6rem; margin-bottom: 1rem; display: block; opacity: 0.8; }
+
+    .detail-label {
+      font-family: 'Jost', sans-serif; font-weight: 200;
+      font-size: 0.62rem; letter-spacing: 0.38em; text-transform: uppercase;
+      color: var(--green-pale); margin-bottom: 0.6rem;
+    }
+
+    .detail-value {
+      font-family: 'Playfair Display', serif; font-weight: 400;
+      font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--beige-cream);
+    }
+
+    /* ── ITINERARY ── */
+    .itinerary { background: var(--beige-cream); padding: 7rem 2rem; }
+    .itinerary-inner { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; }
+    .itinerary-header { text-align: center; margin-bottom: 4rem; }
+
+    .itinerary-header h2 {
+      font-family: 'Playfair Display', serif; font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3.2rem); color: var(--green-deep);
+    }
+
+    .itinerary-header h2 em { font-style: italic; color: var(--green-forest); }
+
+    .day-block {
+      display: flex; align-items: flex-start; gap: 2rem;
+      padding: 2.5rem 0; border-top: 1px solid var(--beige-mid);
+    }
+
+    .day-block:last-child { border-bottom: 1px solid var(--beige-mid); }
+    .day-label { min-width: 100px; text-align: right; }
+
+    .day-label .day-date {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-style: italic; font-size: 2rem; color: var(--green-pale);
+      line-height: 1; display: block;
+    }
+
+    .day-label .day-name {
+      font-family: 'Jost', sans-serif; font-weight: 200;
+      font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--green-mid); display: block; margin-top: 0.3rem;
+    }
+
+    .day-content { flex: 1; padding-top: 0.3rem; }
+
+    .day-content h3 {
+      font-family: 'Playfair Display', serif; font-weight: 400;
+      font-size: 1.3rem; color: var(--green-deep); margin-bottom: 1rem;
+    }
+
+    .timeline { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .timeline li {
+      display: flex; align-items: baseline; gap: 1rem;
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: 1.1rem; color: #4a5c4e; line-height: 1.5;
+    }
+
+    .timeline li .time {
+      font-family: 'Jost', sans-serif; font-weight: 300;
+      font-size: 0.7rem; letter-spacing: 0.1em; color: var(--green-light);
+      min-width: 60px; flex-shrink: 0;
+    }
+
+    .timeline li .dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--green-pale); flex-shrink: 0; margin-top: 0.45rem;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--green-deep); padding: 3rem 2rem; text-align: center; }
+
+    footer p {
+      font-family: 'Jost', sans-serif; font-weight: 200;
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(168, 196, 162, 0.4);
+      position: relative; z-index: 2;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50%       { opacity: 0.8; transform: scaleY(1.15); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero section-wrap section-dark">
+  <div class="hyd-photo top-right"></div>
+  <div class="hyd-photo bot-left"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Celebrating a very special milestone</p>
+    <h1 class="hero-title">Gma's<br><em>90th</em></h1>
+    <p class="hero-year">Les Aspres Trip — 2026</p>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">13th – 16th August 2026</p>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Explore</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ══════ INTRO ══════ -->
+<section class="intro section-wrap section-light">
+  <div class="hyd-photo top-right"></div>
+  <div class="hyd-photo bot-left"></div>
+
+  <div class="intro-inner">
+    <p class="section-label">About the Trip</p>
+    <h2>A celebration in the<br><em>heart of France</em></h2>
+    <p>
+      Gathering the family together to celebrate Gma's 90th birthday in the beautiful
+      surroundings of Les Aspres, France — four days of good food, great company,
+      and memories to last a lifetime.
+    </p>
+  </div>
+</section>
+
+<!-- ══════ DETAILS ══════ -->
+<section class="details section-wrap section-dark">
+  <div class="hyd-photo top-right sm"></div>
+  <div class="hyd-photo bot-left sm"></div>
+
+  <div class="details-grid">
+    <div class="detail-card">
+      <span class="detail-icon">🏡</span>
+      <p class="detail-label">Destination</p>
+      <p class="detail-value">Rue du Perche</p>
+    </div>
+    <div class="detail-card">
+      <span class="detail-icon">📅</span>
+      <p class="detail-label">Dates</p>
+      <p class="detail-value">13th – 16th August 2026</p>
+    </div>
+    <div class="detail-card">
+      <span class="detail-icon">🌿</span>
+      <p class="detail-label">Region</p>
+      <p class="detail-value">Les Aspres, L'Aigle, France</p>
+    </div>
+    <div class="detail-card">
+      <span class="detail-icon">🎂</span>
+      <p class="detail-label">Occasion</p>
+      <p class="detail-value">Gma's 90th Birthday</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ ITINERARY ══════ -->
+<section class="itinerary section-wrap section-light">
+  <div class="hyd-photo top-right"></div>
+  <div class="hyd-photo bot-left"></div>
+
+  <div class="itinerary-inner">
+    <div class="itinerary-header">
+      <p class="section-label">The Plan</p>
+      <h2>The <em>Itinerary</em></h2>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">
+        <span class="day-date">12</span>
+        <span class="day-name">Wednesday</span>
+      </div>
+      <div class="day-content">
+        <h3>Preparations</h3>
+        <ul class="timeline">
+          <li><span class="time">6:00 pm</span><span class="dot"></span>Ricky picks up 7-seater van — Chingford</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">
+        <span class="day-date">13</span>
+        <span class="day-name">Thursday</span>
+      </div>
+      <div class="day-content">
+        <h3>Departure Day</h3>
+        <ul class="timeline">
+          <li><span class="time">7:00 am</span><span class="dot"></span>Mum &amp; Bernie arrive at Ricky's</li>
+          <li><span class="time">8:00 am</span><span class="dot"></span>Ricky picks up Gma &amp; Alan</li>
+          <li><span class="time">10:30 am</span><span class="dot"></span>Arrive at Folkestone</li>
+          <li><span class="time">11:30 am</span><span class="dot"></span>Eurotunnel departure</li>
+          <li><span class="time">1:15 pm</span><span class="dot"></span>Arrive in Calais (local time)</li>
+          <li><span class="time">4:30 pm</span><span class="dot"></span>Arrive at Les Aspres 🎉</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">
+        <span class="day-date">14–15</span>
+        <span class="day-name">Fri – Sat</span>
+      </div>
+      <div class="day-content">
+        <h3>Time in Les Aspres</h3>
+        <ul class="timeline">
+          <li><span class="time"></span><span class="dot"></span>Relaxing at Rue du Perche — more details to follow</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">
+        <span class="day-date">16</span>
+        <span class="day-name">Sunday</span>
+      </div>
+      <div class="day-content">
+        <h3>Return Journey</h3>
+        <ul class="timeline">
+          <li><span class="time">9:00 am</span><span class="dot"></span>Leave Les Aspres</li>
+          <li><span class="time">1:00 pm</span><span class="dot"></span>Arrive in Calais</li>
+          <li><span class="time">2:00 pm</span><span class="dot"></span>Eurotunnel departure</li>
+          <li><span class="time">1:30 pm</span><span class="dot"></span>Arrive in Folkestone (UK time)</li>
+          <li><span class="time">4:00 pm</span><span class="dot"></span>Drop off Gma &amp; Alan</li>
+          <li><span class="time">6:00 pm</span><span class="dot"></span>Drop off van</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="section-wrap section-dark">
+  <div class="hyd-photo top-right sm"></div>
+  <div class="hyd-photo bot-left sm"></div>
+  <p>Gma's 90th &nbsp;·&nbsp; Les Aspres Trip &nbsp;·&nbsp; 13–16 August 2026</p>
+</footer>
+
+</body>
+</html>
